@@ -1,5 +1,7 @@
 import streamlit as st
 from PIL import Image
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 from langchain.agents import create_sql_agent
 from langchain.sql_database import SQLDatabase
@@ -11,6 +13,9 @@ from langchain.agents.agent_toolkits import SQLDatabaseToolkit
 from sqlalchemy import create_engine
 from sqlalchemy.engine.url import URL
 import sqlite3
+
+load_dotenv()
+api_key=os.getenv("OpenAI_api_key")
 
 st.set_page_config(page_title="Chat with SQL DB", page_icon="🔗")
 st.title("Talk2SQL: Natural Language Chat with Your Database")
@@ -38,7 +43,7 @@ api_key = st.sidebar.text_input(label="Enter your API key",type="password")
 if not api_key:
     st.info("Please add your API Key")
 
-llm = ChatOpenAI(model="gpt-3.5-turbo")
+llm = ChatOpenAI(api_key=api_key,model="gpt-3.5-turbo")
 
 @st.cache_resource(ttl="2h")
 def configure(db_uri, mysql_host=None, mysql_port=None, mysql_user=None, mysql_password=None, mysql_db=None):
