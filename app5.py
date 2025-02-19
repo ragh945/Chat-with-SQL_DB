@@ -38,7 +38,7 @@ api_key = st.sidebar.text_input(label="Enter your API key",type="password")
 if not api_key:
     st.info("Please add your API Key")
 
-llm = ChatOpenAI(model="gpt-4o")
+llm = ChatOpenAI(model="gpt-3.5-turbo")
 
 @st.cache_resource(ttl="2h")
 def configure(db_uri, mysql_host=None, mysql_port=None, mysql_user=None, mysql_password=None, mysql_db=None):
