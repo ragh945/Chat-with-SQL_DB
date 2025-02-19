@@ -14,7 +14,7 @@ import sqlite3
 
 st.set_page_config(page_title="Chat with SQL DB", page_icon="🔗")
 st.title("Talk2SQL: Natural Language Chat with Your Database")
-image=Image.open(r"C:\Users\RAGHAVENDRA KUMAR\Downloads\mysql.png")
+image=Image.open("mysql.png")
 st.image(image,use_container_width=False)
 
 # Database options
