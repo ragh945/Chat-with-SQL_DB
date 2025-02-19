@@ -15,7 +15,7 @@ from sqlalchemy.engine.url import URL
 import sqlite3
 
 
-api_key = st.secrets["OpenAI_api_key"]
+api_key = st.secrets.get("OpenAI_api_key", os.getenv("OpenAI_api_key"))
 
 st.set_page_config(page_title="Chat with SQL DB", page_icon="🔗")
 st.title("Talk2SQL: Natural Language Chat with Your Database")
